@@ -3,21 +3,13 @@ pipeline:
   identifier: testingggg
   projectIdentifier: default_project
   orgIdentifier: default
-  tags: {}
   stages:
     - stage:
         name: Test_build
         identifier: Test_build
-        description: ""
         type: CI
         spec:
           cloneCodebase: false
-          caching:
-            enabled: true
-            override: true
-            paths: []
-          buildIntelligence:
-            enabled: true
           platform:
             os: Linux
             arch: Amd64
@@ -32,14 +24,15 @@ pipeline:
                   identifier: Run_1
                   spec:
                     shell: Sh
-                    command: echo "hello"
+                    command: |
+                      echo "hello"
               - step:
                   type: GitClone
                   name: GitClone_1
                   identifier: GitClone_1
                   spec:
                     connectorRef: Git_RK
-                    cloneDirectory: https://github.com/Rajesh0250/MavenWebAppTest.git
+                    cloneDirectory: MavenWebAppTest
                     build:
                       type: branch
                       spec:
@@ -50,4 +43,12 @@ pipeline:
                   identifier: Run_2
                   spec:
                     shell: Sh
-                    command: ls -l
+                    command: |
+                      echo "Current directory:"
+                      pwd
+
+                      echo "Files in workspace:"
+                      ls -la
+
+                      echo "Files inside cloned repository:"
+                      ls -la MavenWebAppTest
