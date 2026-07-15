@@ -52,3 +52,20 @@ pipeline:
 
                       echo "Files inside cloned repository:"
                       ls -la MavenWebAppTest
+              - step:
+                  type: Run
+                  name: Build
+                  identifier: Build
+                  spec:
+                    shell: Sh
+                    command: |-
+                      - step:
+                          type: Run
+                          name: Maven Test
+                          identifier: Maven_Test
+                          spec:
+                            shell: Sh
+                            image: maven:3.9.9-eclipse-temurin-17
+                            command: |
+                              cd MavenWebAppTest
+                              mvn clean test
