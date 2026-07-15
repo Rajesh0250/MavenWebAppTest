@@ -44,3 +44,10 @@ pipeline:
                       type: branch
                       spec:
                         branch: master
+              - step:
+                  type: Run
+                  name: Run_2
+                  identifier: Run_2
+                  spec:
+                    shell: Sh
+                    command: ls -l
