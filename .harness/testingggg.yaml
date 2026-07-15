@@ -33,3 +33,14 @@ pipeline:
                   spec:
                     shell: Sh
                     command: echo "hello"
+              - step:
+                  type: GitClone
+                  name: GitClone_1
+                  identifier: GitClone_1
+                  spec:
+                    connectorRef: Git_RK
+                    cloneDirectory: https://github.com/Rajesh0250/MavenWebAppTest.git
+                    build:
+                      type: branch
+                      spec:
+                        branch: master
