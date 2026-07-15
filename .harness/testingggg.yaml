@@ -53,9 +53,9 @@ pipeline:
                       echo "Files inside cloned repository:"
                       ls -la MavenWebAppTest
               - step:
-                  type: Test
-                  name: Test_1
-                  identifier: Test_1
+                  type: Run
+                  name: Build
+                  identifier: Build
                   spec:
                     connectorRef: rajesh0250_Docker_reg
                     image: maven:3.9.9-eclipse-temurin-17
@@ -63,4 +63,3 @@ pipeline:
                     command: |-
                       cd MavenWebAppTest
                       mvn clean test
-                    intelligenceMode: true
